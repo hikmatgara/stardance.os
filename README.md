@@ -18,3 +18,5 @@ August 19
 • changed the wallpaper of the OS
 • added a top bar with a live clock but it wasn't updating for some reason
 I will fix it anyway.
+• I fixed the clock and now its live!
+• Asked Artificial Intelligence to tell me the inefficiencies in my code but I fixed it myself.
