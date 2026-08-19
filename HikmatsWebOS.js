@@ -1,5 +1,18 @@
+
+var welcomeScreen = document.querySelector("#welcome");
+var closeButton = document.querySelector("#welcomeclose");
+var openButton = document.querySelector("#welcomeopen");
+
+closeButton.addEventListener("click", function() {
+    welcomeScreen.style.display = "none";
+});
+
+openButton.addEventListener("click", function() {
+    welcomeScreen.style.display = "block";
+});
+
 function updateTime() {
-    var HikmatOScurrentTime = new Date().toLocalString();
+  var HikmatOScurrentTime = new Date().toLocaleString();
     var HikmatOStimeText = document.querySelector("#timeElement");
     HikmatOStimeText.innerHTML = HikmatOScurrentTime;
     }
@@ -39,10 +52,10 @@ function dragElement(element) {
     initialY = e.clientY;
    
     document.onmouseup = stopDragging;
-    document.onmousemove = dragElement;
+    document.onmousemove = elementDrag;
   }
 
-  
+  function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
     
@@ -59,10 +72,8 @@ function dragElement(element) {
   function stopDragging() {
     document.onmouseup = null;
     document.onmousemove = null;
-  }    e = e || window.event;
-    e.preventDefault();
-    // Step 7: Get the mouse cursor position at startup.
-    initialX = e.clientX;
+  }
+}    initialX = e.clientX;
     initialY = e.clientY;
     // Step 8: Set up event listeners for mouse movement (`elementDrag`) and mouse button release (`closeDragElement`).
     document.onmouseup = stopDragging;
