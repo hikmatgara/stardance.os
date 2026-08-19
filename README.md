@@ -11,7 +11,9 @@ Choosing this mission gave me opportunities to learn HTML,CSS and JS which I am 
 Here is my journey!
 
 August 17 - found about hack club online and got very excited about it, started my project.
+
 August 18 - my ID verification is accepted and im happier than ever and keep building
+
 August 19 
 • changed the wallpaper of the OS
 • added a top bar with a live clock but it wasn't updating for some reason
