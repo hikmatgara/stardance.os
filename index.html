@@ -5,26 +5,24 @@
     <title>Hikmat's OS</title>
   </head>
   <body style="background-image: url(./modern-minimalist.jpg.avif); height: 100vh; background-size: cover;">
-<html>
-  <div style="position: absolute; width: 100%; display: flex; backdrop-filter: blur(10px); background-color: rgba(0, 0, 0); justify-content: space-between; display: flex; color: aliceblue;">
+  <div style="position: absolute; width: 100%; backdrop-filter: blur(10px); background-color: rgba(0, 0, 0, 0.5); justify-content: space-between; display: flex; color: aliceblue;">
     <p style="margin-left: 16px; padding: 8px 16px;"></p>
       Hikmat's Web OS
   </p>
   <p style="color: aliceblue">
     xD
   </p>
-  <p style="margin-right: 16px; padding: 8px 16px;"></p>
-    8/18/2026 12:53 pm
+  <p id="timeElement" style="margin-right: 16px; padding: 8px 16px;"></p>
   </p>
   </div>
   <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1rem solid; background-color: #3535c6; font-family: 'Courier New', monospace;">
     <h1 style="padding: 0px; margin: 0px; color: aliceblue;">Welcome to Hikmat's Web OS</h1>
-    <h2 style="color:aliceblue">Introduction</h2>
+    <h3 style="color:aliceblue">Introduction</h3>
     <p style="color:aliceblue">Welcome to my operating system!</p>
     <a href="https://www.tiktok.com/@ktnev?_r=1&_t=ZS-98z6jgVH1ZX" style="color:aliceblue">Follow me on TikTok</a>
-    <h3 style="color:aliceblue">I am a 14 year old starting my journey in programming and YSWS.</h3>
-    <h3 style="color:aliceblue">I love computers, building Softwware/Hardware and i love cybersecurity.</h3>
-    <h3 style="color:aliceblue">I joined  The HackClub to make new friends and connect with like-minded people! </h3>
+    <p style="color:aliceblue">I am a 14 year old starting my journey in programming and YSWS.</p>
+    <p style="color:aliceblue">I love computers, building Software/Hardware and I love CyberSecurity.</p>
+    <p style="color:aliceblue">I joined  The HackClub to make new friends and connect with like-minded people! </p>
   </body>
   <script>
     function updateTime() {
@@ -35,10 +33,7 @@
     setInterval(function() {
       document.querySelector("#timeElement").innerHTML = new Date().toLocaleString();
     }, 1000);
-    <p id="timeElement"
-    style="(Your CSS styles here)">
-    Time
-    </p>
+    
 
   </script>  
 
