@@ -73,6 +73,17 @@ function dragElement(element) {
     document.onmouseup = null;
     document.onmousemove = null;
   }
+}    initialY = e.clientY;
+    
+    element.style.top = (element.offsetTop - currentY) + "px";
+    element.style.left = (element.offsetLeft - currentX) + "px";
+  }
+
+  
+  function stopDragging() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
 }    initialX = e.clientX;
     initialY = e.clientY;
     // Step 8: Set up event listeners for mouse movement (`elementDrag`) and mouse button release (`closeDragElement`).
