@@ -1,0 +1,43 @@
+.className {
+    width: 5;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.closeButton {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    background-color: red;
+    border-radius: 10px;
+    border: solid 1px black;
+    margin-left: 5px;
+}
+
+.window {
+    border: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    position: absolute;
+    background-color: white;
+}
+
+.windowheader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 5px;
+    border-bottom: solid 1px black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.headertext {
+    font-weight: bold;
+    margin-left: 5px;
+    color: black;
+}
+
