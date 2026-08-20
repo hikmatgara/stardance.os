@@ -24,4 +24,5 @@ I will fix it anyway.
 
 August 20
 • Added a Styles.css file to the repository and went dived deeper in the workshop to learn the concepts of a separate css file.
+• my whole code broke down so I asked AI for a little help.
 
