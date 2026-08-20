@@ -1,40 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hikmat's OS</title>
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        background-image: url(./modern-minimalist.jpg.avif);
-        background-size: cover;
-        font-family: 'Courier New', monospace;
-      }
+// Runs after the HTML is parsed (the script tag uses defer, and this is a
+// second safety net in case the tag ever gets moved).
+document.addEventListener("DOMContentLoaded", function () {
+  var welcomeScreen = document.querySelector("#welcome");
+  var closeButton = document.querySelector("#welcomeclose");
+  var openButton = document.querySelector("#welcomeopen");
+  var welcomeHeader = document.querySelector("#welcomeheader");
 
-      #taskbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 16px;
-        color: aliceblue;
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-      }
+  // If any of these are null, the file names or IDs don't match the HTML.
+  // The console message tells you which one instead of failing silently.
+  if (!welcomeScreen || !closeButton || !openButton || !welcomeHeader) {
+    console.error("Web OS: missing an element. Check the IDs in index.html.");
+    return;
+  }
 
-      #taskbar p {
-        margin: 0;
-      }
+  closeButton.addEventListener("click", function () {
+    welcomeScreen.style.display = "none";
+  });
 
-      #welcome {
-        position: absolute;
-        top: 120px;
-        left: 200px;
+  openButton.addEventListener("click", function () {
+    // "flex" because .window uses display: flex. "block" would break the layout.
+    welcomeScreen.style.display = "flex";
+  });
+
+  updateTime();
+  setInterval(updateTime, 1000);
+
+  makeDraggable(welcomeScreen, welcomeHeader);
+});
+
+function updateTime() {
+  var timeElement = document.querySelector("#timeElement");
+  if (timeElement) {
+    timeElement.textContent = new Date().toLocaleString();
+  }
+}
+
+function makeDraggable(element, handle) {
+  var startX = 0;
+  var startY = 0;
+
+  handle.addEventListener("mousedown", function (event) {
+    // Don't start a drag when the close button inside the header is clicked.
+    if (event.target.closest(".closeButton")) return;
+
+    event.preventDefault();
+    startX = event.clientX - element.offsetLeft;
+    startY = event.clientY - element.offsetTop;
+
+    function move(moveEvent) {
+      var left = moveEvent.clientX - startX;
+      var top = moveEvent.clientY - startY;
+
+      // Keep the window on screen.
+      var maxLeft = window.innerWidth - element.offsetWidth;
+      var maxTop = window.innerHeight - element.offsetHeight;
+      left = Math.min(Math.max(0, left), Math.max(0, maxLeft));
+      top = Math.min(Math.max(0, top), Math.max(0, maxTop));
+
+      // Backticks with ${ } — using $( ) here is what broke the old version.
+      element.style.left = `${left}px`;
+      element.style.top = `${top}px`;
+    }
+
+    function stop() {
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseup", stop);
+    }
+
+    document.addEventListener("mousemove", move);
+    document.addEventListener("mouseup", stop);
+  });
+}        left: 200px;
         width: 420px;
         border: 1rem solid #000000;
         background-color: #3535c6;
