@@ -2,39 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Hikmat's OS</title>
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        background-image: url(./modern-minimalist.jpg.avif);
-        background-size: cover;
-        font-family: 'Courier New', monospace;
-      }
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hikmat's Web OS</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
 
-      #taskbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 16px;
-        color: aliceblue;
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-      }
+  <body>
+    <div id="taskbar">
+      <p class="taskbar-button" id="welcomeopen">Hikmat's Web OS</p>
+      <p>xD</p>
+      <p id="timeElement"></p>
+    </div>
 
-      #taskbar p {
-        margin: 0;
-      }
+    <div class="window" id="welcome">
+      <div class="windowheader" id="welcomeheader">
+        <span class="headertext">Welcome to Hikmat's Web OS</span>
+        <button class="closeButton" id="welcomeclose" aria-label="Close window">
+          X
+        </button>
+      </div>
 
-      #welcome {
-        position: absolute;
-        top: 120px;
-        left: 200px;
+      <div class="content">
+        <h3>Introduction</h3>
+        <p>Welcome to my operating system!</p>
+        <p>
+          <a
+            href="https://www.tiktok.com/@ktnev?_r=1&amp;_t=ZS-98z6jgVH1ZX"
+            target="_blank"
+            rel="noopener"
+            >Follow me on TikTok</a
+          >
+        </p>
+        <p>I am a 14 year old starting my journey in programming and YSWS.</p>
+        <p>
+          I love computers, building software and hardware, and I love
+          cybersecurity.
+        </p>
+        <p>
+          I joined Hack Club to make new friends and connect with like-minded
+          people!
+        </p>
+      </div>
+    </div>
+  </body>
+</html>        left: 200px;
         width: 420px;
         border: 1rem solid #000000;
         background-color: #3535c6;
