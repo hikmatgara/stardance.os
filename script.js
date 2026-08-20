@@ -1,15 +1,32 @@
-// Runs after the HTML is parsed (the script tag uses defer, and this is a
-// second safety net in case the tag ever gets moved).
+// The clock is set up first and on its own, so a problem with the window
+// code can never stop it from running.
+updateTime();
+setInterval(updateTime, 1000);
+
+function updateTime() {
+  var timeElement = document.querySelector("#timeElement");
+  if (timeElement) {
+    timeElement.textContent = new Date().toLocaleString();
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+  updateTime();
+
   var welcomeScreen = document.querySelector("#welcome");
   var closeButton = document.querySelector("#welcomeclose");
   var openButton = document.querySelector("#welcomeopen");
   var welcomeHeader = document.querySelector("#welcomeheader");
 
-  // If any of these are null, the file names or IDs don't match the HTML.
-  // The console message tells you which one instead of failing silently.
+  // If any of these are null, the IDs in index.html don't match.
+  // This logs which piece is missing instead of failing silently.
   if (!welcomeScreen || !closeButton || !openButton || !welcomeHeader) {
-    console.error("Web OS: missing an element. Check the IDs in index.html.");
+    console.error("Web OS: missing an element. Check the IDs in index.html.", {
+      welcome: !!welcomeScreen,
+      welcomeclose: !!closeButton,
+      welcomeopen: !!openButton,
+      welcomeheader: !!welcomeHeader,
+    });
     return;
   }
 
@@ -22,18 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
     welcomeScreen.style.display = "flex";
   });
 
-  updateTime();
-  setInterval(updateTime, 1000);
-
   makeDraggable(welcomeScreen, welcomeHeader);
 });
-
-function updateTime() {
-  var timeElement = document.querySelector("#timeElement");
-  if (timeElement) {
-    timeElement.textContent = new Date().toLocaleString();
-  }
-}
 
 function makeDraggable(element, handle) {
   var startX = 0;
@@ -70,111 +77,4 @@ function makeDraggable(element, handle) {
     document.addEventListener("mousemove", move);
     document.addEventListener("mouseup", stop);
   });
-}        left: 200px;
-        width: 420px;
-        border: 1rem solid #000000;
-        background-color: #3535c6;
-        color: aliceblue;
-        
-      }
-
-      #welcomeheader {
-        margin: 0;
-        padding: 8px 12px;
-        background-color: #3535c6;
-        cursor: move;
-        user-select: none;
-        font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      #welcomeclose {
-        cursor: pointer;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        color: aliceblue;
-        padding: 4px 8px;
-      }
-
-      #welcome .content {
-        padding: 12px;
-      }
-
-      #welcome h3,
-      #welcome p {
-        margin: 0;
-        padding: 8px 0;
-      }
-
-      #welcome a {
-        color: aliceblue;
-      }
-
-    </style>
-  </head>
-  <body>
-    <div id="taskbar">
-       <p style="cursor: pointer" id="welcomeopen">Hikmat's Web OS</p>
-      <p>xD</p>
-      <p id="timeElement"></p>
-    </div>
-
-    <div id="welcome">
-      <p style="position: absolute; top: 0; right: 0; padding: 8px 12px; background-color: #3535c6; color: aliceblue; cursor: pointer" id="welcomeclose">X</p>
-      <p id="welcomeheader">Welcome to Hikmat's Web OS</p>
-      <div class="content">
-        <h3>Introduction</h3>
-        <p>Welcome to my operating system!</p>
-        <a href="https://www.tiktok.com/@ktnev?_r=1&_t=ZS-98z6jgVH1ZX">Follow me on TikTok</a>
-        <p>I am a 14 year old starting my journey in programming and YSWS.</p>
-        <p>I love computers, building Software/Hardware and I love CyberSecurity.</p>
-        <p>I joined The HackClub to make new friends and connect with like-minded people!</p>
-     <div class="window" style="top: calc(50% - 540px); left: calc(50% - 210px)"></div>
-        <div class="windowheader" id="welcomeheader">
-        </div>
-        <link rel="stylesheet" type="text/css" href="./styles.css" />
-        <script src="./script.js"></script>
-      </body>
-  </html>
-    
-  if (document.getElementById(element.id + "header")) {
-    
-    document.getElementById(element.id + "header").onmousedown = startDragging;
-  } else {
-    
-    element.onmousedown = startDragging;
-  }
-
-  
-  function startDragging(e) {
-    e = e || window.event;
-    e.preventDefault();
-  
-    initialX = e.clientX;
-    initialY = e.clientY;
-   
-    document.onmouseup = stopDragging;
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    
-    currentX = initialX - e.clientX;
-    currentY = initialY - e.clientY;
-    initialX = e.clientX;
-    initialY = e.clientY;
-    
-    element.style.top = (element.offsetTop - currentY) + "px";
-    element.style.left = (element.offsetLeft - currentX) + "px";
-  }
-
-  
-  function stopDragging() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
 }
