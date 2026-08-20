@@ -21,3 +21,7 @@ I will fix it anyway.
 • I fixed the clock and now its live!
 • Asked Artificial Intelligence to tell me the inefficiencies in my code but I fixed it myself.
 • Added a JavaScript File to my Repo and also started completely changing the html code with the a little guide from ai
+
+August 20
+• Added a Styles.css file to the repository and went dived deeper in the workshop to learn the concepts of a separate css file.
+
