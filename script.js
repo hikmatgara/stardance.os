@@ -1,40 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hikmat's OS</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background-image: url(./modern-minimalist.jpg.avif);
+        background-size: cover;
+        font-family: 'Courier New', monospace;
+      }
 
-var welcomeScreen = document.querySelector("#welcome");
-var closeButton = document.querySelector("#welcomeclose");
-var openButton = document.querySelector("#welcomeopen");
+      #taskbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+        color: aliceblue;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+      }
 
-closeButton.addEventListener("click", function() {
-    welcomeScreen.style.display = "none";
-});
+      #taskbar p {
+        margin: 0;
+      }
 
-openButton.addEventListener("click", function() {
-    welcomeScreen.style.display = "block";
-});
+      #welcome {
+        position: absolute;
+        top: 120px;
+        left: 200px;
+        width: 420px;
+        border: 1rem solid #000000;
+        background-color: #3535c6;
+        color: aliceblue;
+        
+      }
 
-function updateTime() {
-  var HikmatOScurrentTime = new Date().toLocaleString();
-    var HikmatOStimeText = document.querySelector("#timeElement");
-    HikmatOStimeText.innerHTML = HikmatOScurrentTime;
-    }
-    setInterval(function() {
-      document.querySelector("#timeElement").innerHTML = new Date().toLocaleString();
-    }, 1000);
-    var initialY = 0;
-  var currentX = 0;
-  var currentY = 0;
+      #welcomeheader {
+        margin: 0;
+        padding: 8px 12px;
+        background-color: #3535c6;
+        cursor: move;
+        user-select: none;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
+      #welcomeclose {
+        cursor: pointer;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: aliceblue;
+        padding: 4px 8px;
+      }
 
-dragElement(document.getElementById("window"));
+      #welcome .content {
+        padding: 12px;
+      }
 
+      #welcome h3,
+      #welcome p {
+        margin: 0;
+        padding: 8px 0;
+      }
 
-function dragElement(element) {
+      #welcome a {
+        color: aliceblue;
+      }
 
-  var initialX = 0;
-  var initialY = 0;
-  var currentX = 0;
-  var currentY = 0;
+    </style>
+  </head>
+  <body>
+    <div id="taskbar">
+       <p style="cursor: pointer" id="welcomeopen">Hikmat's Web OS</p>
+      <p>xD</p>
+      <p id="timeElement"></p>
+    </div>
 
-  
+    <div id="welcome">
+      <p style="position: absolute; top: 0; right: 0; padding: 8px 12px; background-color: #3535c6; color: aliceblue; cursor: pointer" id="welcomeclose">X</p>
+      <p id="welcomeheader">Welcome to Hikmat's Web OS</p>
+      <div class="content">
+        <h3>Introduction</h3>
+        <p>Welcome to my operating system!</p>
+        <a href="https://www.tiktok.com/@ktnev?_r=1&_t=ZS-98z6jgVH1ZX">Follow me on TikTok</a>
+        <p>I am a 14 year old starting my journey in programming and YSWS.</p>
+        <p>I love computers, building Software/Hardware and I love CyberSecurity.</p>
+        <p>I joined The HackClub to make new friends and connect with like-minded people!</p>
+     <div class="window" style="top: calc(50% - 540px); left: calc(50% - 210px)"></div>
+        <div class="windowheader" id="welcomeheader">
+        </div>
+        <link rel="stylesheet" type="text/css" href="./styles.css" />
+        <script src="./script.js"></script>
+      </body>
+  </html>
+    
   if (document.getElementById(element.id + "header")) {
     
     document.getElementById(element.id + "header").onmousedown = startDragging;
