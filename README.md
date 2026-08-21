@@ -24,5 +24,9 @@ I will fix it anyway.
 
 August 20
 • Added a Styles.css file to the repository and went dived deeper in the workshop to learn the concepts of a separate css file.
-• my whole code broke down so I asked AI for a little help.
+• My whole code broke down so I asked AI for a little help.
 
+August 21
+• Started building my first app in the OS.
+• A bit challenging to learn from the workshop because they usually do not state in which line should a code be placed.
+• Added a separate JS file to the repo for the app.
