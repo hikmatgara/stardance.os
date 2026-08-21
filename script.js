@@ -8,35 +8,43 @@ function updateTime() {
   }
 }
 
+
+var topZIndex = 1;
+
 document.addEventListener("DOMContentLoaded", function () {
   updateTime();
 
-  var welcomeScreen = document.querySelector("#welcome");
-  var closeButton = document.querySelector("#welcomeclose");
-  var openButton = document.querySelector("#welcomeopen");
-  var welcomeHeader = document.querySelector("#welcomeheader");
+  var windows = document.querySelectorAll(".window");
 
- 
-  if (!welcomeScreen || !closeButton || !openButton || !welcomeHeader) {
-    console.error("Web OS: missing an element. Check the IDs in index.html.", {
-      welcome: !!welcomeScreen,
-      welcomeclose: !!closeButton,
-      welcomeopen: !!openButton,
-      welcomeheader: !!welcomeHeader,
+  windows.forEach(function (win) {
+    var header = win.querySelector(".windowheader");
+    if (header) makeDraggable(win, header);
+
+    win.addEventListener("mousedown", function () {
+      topZIndex += 1;
+      win.style.zIndex = topZIndex;
     });
-    return;
-  }
 
-  closeButton.addEventListener("click", function () {
-    welcomeScreen.style.display = "none";
+    var closeButton = win.querySelector(".closeButton");
+    if (closeButton) {
+      closeButton.addEventListener("click", function () {
+        win.hidden = true;
+      });
+    }
   });
 
-  openButton.addEventListener("click", function () {
-   
-    welcomeScreen.style.display = "flex";
+  document.querySelectorAll("[data-opens]").forEach(function (opener) {
+    opener.addEventListener("click", function () {
+      var target = document.querySelector("#" + opener.dataset.opens);
+      if (!target) {
+        console.error("Web OS: no window with id", opener.dataset.opens);
+        return;
+      }
+      target.hidden = false;
+      topZIndex += 1;
+      target.style.zIndex = topZIndex;
+    });
   });
-
-  makeDraggable(welcomeScreen, welcomeHeader);
 });
 
 function makeDraggable(element, handle) {
@@ -44,7 +52,6 @@ function makeDraggable(element, handle) {
   var startY = 0;
 
   handle.addEventListener("mousedown", function (event) {
-    
     if (event.target.closest(".closeButton")) return;
 
     event.preventDefault();
@@ -55,14 +62,24 @@ function makeDraggable(element, handle) {
       var left = moveEvent.clientX - startX;
       var top = moveEvent.clientY - startY;
 
-     
       var maxLeft = window.innerWidth - element.offsetWidth;
       var maxTop = window.innerHeight - element.offsetHeight;
       left = Math.min(Math.max(0, left), Math.max(0, maxLeft));
       top = Math.min(Math.max(0, top), Math.max(0, maxTop));
 
-     
       element.style.left = `${left}px`;
+      element.style.top = `${top}px`;
+    }
+
+    function stop() {
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseup", stop);
+    }
+
+    document.addEventListener("mousemove", move);
+    document.addEventListener("mouseup", stop);
+  });
+}      element.style.left = `${left}px`;
       element.style.top = `${top}px`;
     }
 
