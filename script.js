@@ -1,4 +1,5 @@
 
+updateTime();
 setInterval(updateTime, 1000);
 
 function updateTime() {
@@ -52,6 +53,7 @@ function makeDraggable(element, handle) {
   var startY = 0;
 
   handle.addEventListener("mousedown", function (event) {
+    
     if (event.target.closest(".closeButton")) return;
 
     event.preventDefault();
@@ -68,18 +70,6 @@ function makeDraggable(element, handle) {
       top = Math.min(Math.max(0, top), Math.max(0, maxTop));
 
       element.style.left = `${left}px`;
-      element.style.top = `${top}px`;
-    }
-
-    function stop() {
-      document.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseup", stop);
-    }
-
-    document.addEventListener("mousemove", move);
-    document.addEventListener("mouseup", stop);
-  });
-}      element.style.left = `${left}px`;
       element.style.top = `${top}px`;
     }
 
