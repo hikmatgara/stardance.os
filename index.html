@@ -6,25 +6,29 @@
     <title>Hikmat's Web OS</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
+    <script src="diary.js" defer></script>
   </head>
 
   <body>
     <div id="taskbar">
-      <p class="taskbar-button" id="welcomeopen">Hikmat's Web OS</p>
+      <p class="taskbar-button" data-opens="welcome">Hikmat's Web OS</p>
       <p>xD</p>
       <p id="timeElement"></p>
     </div>
 
-    <div class="selected" styles="(styles)">
-
+    <!-- Desktop icons. Add another button here to add another app. -->
+    <div id="desktopApps">
+      <button class="desktop-icon" data-opens="diary">
+        <img src="92-NB.webp" alt="" />
+        <span>Diary</span>
+      </button>
     </div>
 
+    <!-- ---- Welcome window ---- -->
     <div class="window" id="welcome">
-      <div class="windowheader" id="welcomeheader">
+      <div class="windowheader">
         <span class="headertext">Welcome to Hikmat's Web OS</span>
-        <button class="closeButton" id="welcomeclose" aria-label="Close window">
-          X
-        </button>
+        <button class="closeButton" aria-label="Close window">X</button>
       </div>
 
       <div class="content">
@@ -47,40 +51,20 @@
           I joined Hack Club to make new friends and connect with like-minded
           people!
         </p>
-        <div id="dekstopApps" style="padding-top: 64px; padding-left: 16px;">
-          <p> Diary </p>
-        </div>
-        <body style="font-family: 'Courier New', Courier, monospace; height: 100vh; background-color: aqua; background-size: cover; background-repeat: no-repeat; margin: 0px;">
-          <div class="window" id="welcome" style="top: calc(50% - 90px); left: calc(50% - 180px);">
-           <p> Type here... </p>
-          </div>
+      </div>
+    </div>
 
-          <div style="position: absolute; window: 100%; display: flex; backdrop-filter: blur(15px); background-color: black; justify-content: space-between; gap: 32px;">
-            <p> Hikmat's Diaries</p>
-          </div>
+    <!-- ---- Diary window ---- -->
+    <div class="window" id="diary" hidden>
+      <div class="windowheader">
+        <span class="headertext">Hikmat's Diary</span>
+        <button class="closeButton" aria-label="Close window">X</button>
+      </div>
 
-          <div id="desktopApps" style="padding-top: 64px; padding-left: 16px;">
-            <p>Diary</p>
-          </div>
-          <div id="desktopApps" style="padding-right: 64px;">
-            <div style="text-align: center; padding: 16px; filter: drop-shadow(0 0 6px gray); width: fit-content">
-              <img src="./92-NB.webp" style="width: 64px; height: 64px; border-radius: 16px;">
-              <p style="margin: 0px; color: white; ">Diary</p>
-            </div>
-          </div>
-          <div class="window" id="Diary" style="top: calc(50% - 240px);">
-            <div class="windowheader" id="Diaryheader">
-             <div class="closebutton" id="Diaryheader">
-          </div>
-
-          <p class="headertext">Diary</p>
-          <div style="width: 16px; margin-left: 6x; height: 16px;"></div>
-          </div>
-          <div style="background-color: white; margin: 6px; border-radius: 12px; width: 520px; height: 480px; padding: 16px;">
-            <p>Hikmat's Diary</p>
-          </div>
-        </div>
-        </body>
-        <script src="diary.js" defer></script>
+      <div class="content">
+        <textarea id="diaryText" placeholder="Type here..."></textarea>
+        <p class="diary-status" id="diaryStatus">Saves as you type.</p>
+      </div>
+    </div>
   </body>
 </html>
