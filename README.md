@@ -30,3 +30,4 @@ August 21
 • Started building my first app in the OS.
 • A bit challenging to learn from the workshop because they usually do not state in which line should a code be placed.
 • Added a separate JS file to the repo for the app.
+• The icon of the app does not load in the web os for some reason I can't figure out why ( I am crashing out)
